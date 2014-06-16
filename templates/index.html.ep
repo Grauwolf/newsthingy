@@ -1,0 +1,11 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Newsthingy</title>
+		<link rel="shortcut icon" type="image/vnd.microsoft.icon" href="/img/favicon.ico" />
+	</head>
+	<frameset cols=30%,70%>
+		<frame src="<%= url_for "/feeds" %>" name="side">
+		<frame src="<%= url_for '/empty' %>" name="content">
+	</frameset>
+</html>

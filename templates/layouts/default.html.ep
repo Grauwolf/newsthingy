@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link rel="shortcut icon" type="image/vnd.microsoft.icon" href="/img/favicon.ico" />
+
+		<title>Newsthingy</title>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    %= stylesheet '/css/bootstrap.min.css'
+    %= stylesheet '/css/style.css'
+
+    %= javascript '/js/jquery-1.5.1.min.js'
+    %= javascript begin
+			$(document).ready(function(){
+				$('a.unread').click(function(event){
+					$(this).removeClass('unread').addClass('read');
+				});
+			});
+    % end
+
+	</head>
+	<body>
+		<div class="container">
+			%== content
+		</div>
+	</body>
+</html>

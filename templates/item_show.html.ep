@@ -1,0 +1,39 @@
+% layout 'default';
+% use Mojo::ByteStream 'b';
+
+% foreach my $item ( @$items ) {
+
+<div class="navbar navbar-fixed-top navbar-default">
+    <ul class="nav navbar-nav">
+        <li>
+            %= link_to '/item/' . $item->id . '/unread/' => begin
+            <i class="glyphicon glyphicon-check"></i> 
+            Mark as unread
+            % end
+        <li> 
+    </ul>
+</div> 
+
+
+<h1>
+    %= link_to b( $item->title )->html_unescape, $item->url
+</h1>
+
+<div class="row">
+    <div class="span6">
+        <small>
+            %= DateTime->from_epoch( epoch => $item->pubDate )
+        </small>
+    </div>
+    <div class="span6">
+        % if ( $item->author ) {
+        <strong>Author </strong> <%= $item->author %>
+        % }
+    </div>
+</div>
+
+<hr>
+
+%== $item->description
+
+% }

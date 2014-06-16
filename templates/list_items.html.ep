@@ -1,0 +1,49 @@
+% layout 'side';
+% use Mojo::ByteStream 'b';
+
+% foreach my $category ( sort keys %{$content} ) {
+    <h2><%= $category %></h2>
+    % foreach my $feed ( sort keys $content->{$category} ) {
+        % my $nextupdate = ( $content->{$category}->{$feed}->{nextupdate} );
+    <h3>
+        <a href="/feeds/<%= $content->{ $category }->{ $feed }->{feedid} %>">
+            <%= $feed %>
+        </a>
+    </h3>
+    <ul class="list-unstyled">
+        % foreach my $item ( @{ $content->{$category}->{$feed}->{items} } ) {
+            % my $id        = $item->{id};
+            % my $title     = $item->{title};
+            % my $url       = $item->{url};
+            % my $pubDate   = $item->{pubDate};
+            % my $starred   = $item->{starred};
+            % my $class     = 'unread';
+            % $class        = 'read' if $item->{read};
+        <li>
+            % $title = b( $title )->html_unescape;
+            %= link_to $title, '/item/' . $id, target => 'content', class => $class
+            <span class="pubdate"><small><%= link_to $pubDate, $url, target => 'content' %></small></span>
+        </li>
+        % }
+    </ul>
+
+    <ul class="list-unstyled">
+        <li>
+            % my $feedid =  $content->{$category}->{$feed}->{feedid};
+            <a href="/flag/feed/<%= $feedid %>/read">
+                <i class="glyphicon glyphicon-check"></i>
+                Mark as read
+            <a>
+        </li>
+        <li>
+            <a href="/feeds/<%= $feedid %>/update">
+                <i class="glyphicon glyphicon-refresh"></i>
+                Update feed
+            </a>
+            <small>
+                (next in <%= $nextupdate %>)
+            </small> 
+        </li>
+    </ul>
+    % }
+% }

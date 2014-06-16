@@ -1,0 +1,19 @@
+body { padding-top:45px; }
+
+small { font-size:0.75em; }
+
+h3 a { color:black; }
+
+.clear  { clear:both; }
+.left   { float:left; }
+.right  { float:right; }
+
+.inactive a { color:#aaa; }
+.inactive   { color:#aaa; }
+.unread     { font-weight:bold; }
+
+.pubdate a          { color:#777; }
+.pubdate a:hover    { color:#333; }
+
+
+#item-list li { white-space:nowrap; }
