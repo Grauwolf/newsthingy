@@ -10,6 +10,7 @@ This is work in progress so it's still crappy (eg. no form validation).
 * `carton install`
 * `carton exec hypnotoad -f site.pl`
 * open http://127.0.0.1:3000 in your browser
+* run `carton exec fetch_feeds.pl`
 
 ## Build with
 
